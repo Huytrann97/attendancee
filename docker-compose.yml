@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www
+      - ./config/nginx/conf.d/:/etc/nginx/conf.d/
+    depends_on:
+      - app
+      - db
+
+  db:
+    image : mysql
+    container_name : mysql
+    volumes:
+      - ./config/mysql/data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: blog
+      MYSQL_ROOT_PASSWORD: password
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - "3400:80"
+    depends_on:
+      - db
+
+  app:
+    container_name: attendance
+    build:
+      context: ./config/php
+      dockerfile: Dockerfile
+    volumes:
+      - ./BackEnd:/var/www
+    ports:
+      - "9000:9000"
+    working_dir: /var/www
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 8025:8025
