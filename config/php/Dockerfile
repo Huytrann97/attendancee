@@ -52,10 +52,7 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /composer
 ENV PATH $PATH:/composer/vendor/bin
 
-
-RUN composer install --verbose
-
-# Run PHP-FPM when the container is started
-CMD php-fpm
+RUN composer install
 
 
+CMD composer install && php-fpm
