@@ -1,7 +1,6 @@
 FROM php:8.0.3-fpm
 
-RUN docker-php-ext-install pdo pdo_mysql
-
+WORKDIR /var/www
 
 RUN apt-get update
 
@@ -26,7 +25,7 @@ RUN apt-get -y install --fix-missing \
     libicu-dev \
     libonig-dev \
     libxml2-dev
-    
+
 RUN echo "\e[1;33mInstall important docker dependencies\e[0m"
 RUN docker-php-ext-install \
     exif \
@@ -42,14 +41,21 @@ RUN docker-php-ext-install \
     tokenizer \
     bz2 \
     zip \
-    intl
+    intl \
+    pdo \
+    pdo_mysql
 
-# Install Postgre PDO
-RUN apt-get install -y libpq-dev \
-    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-    && docker-php-ext-install pdo pdo_pgsql pgsql
-
+COPY ../BackEnd/ /var/www
 COPY --from=composer /usr/bin/composer /usr/bin/composer
+
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /composer
 ENV PATH $PATH:/composer/vendor/bin
+
+
+RUN composer install --verbose
+
+# Run PHP-FPM when the container is started
+CMD php-fpm
+
+

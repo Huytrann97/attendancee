@@ -8,7 +8,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./src:/var/www
+      - ./BackEnd:/var/www
       - ./config/nginx/conf.d/:/etc/nginx/conf.d/
     depends_on:
       - app
@@ -22,7 +22,7 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: blog
+      MYSQL_DATABASE: attendance
       MYSQL_ROOT_PASSWORD: password
 
   phpmyadmin:
@@ -36,8 +36,8 @@ services:
   app:
     container_name: attendance
     build:
-      context: ./config/php
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: config/php/Dockerfile
     volumes:
       - ./BackEnd:/var/www
     ports:
