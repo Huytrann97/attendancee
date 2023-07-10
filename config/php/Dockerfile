@@ -52,7 +52,4 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /composer
 ENV PATH $PATH:/composer/vendor/bin
 
-RUN composer install
-
-
 CMD composer install && php-fpm
