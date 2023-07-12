@@ -6,8 +6,4 @@ COPY ../FrontEnd/ /usr/src/app
 
 EXPOSE 3000
 
-RUN npm install
-
-RUN npm run build
-
 CMD npm install && npm run build && npm start
