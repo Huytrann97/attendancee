@@ -7,7 +7,9 @@ export default function Home() {
     <div>
       <Header />
       <h3>Home Page</h3>
-      <Button></Button>
+      <Link href='/login'>
+        <Button></Button>
+      </Link>
     </div>
   )
 }
