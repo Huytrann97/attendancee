@@ -1,15 +1,12 @@
 import Image from 'next/image'
-import Link from 'next/link'
-import Button from './components/Button'
 import Header from './layouts/Header'
+import Button from './components/Button'
 export default function Home() {
   return (
-    <div>
+    <div >
       <Header />
-      <h3>Home Page</h3>
-      <Link href='/login'>
-        <Button></Button>
-      </Link>
+      <p className='text-lg'>Home Page</p>
+      <Button />
     </div>
-  )
+   )
 }
