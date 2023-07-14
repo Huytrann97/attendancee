@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.content {
+  height: calc(100% - (header_height + footer_height)); /* Điều chỉnh header_height và footer_height theo chiều cao thực tế của header và footer */
+  overflow-y: auto;
+}
