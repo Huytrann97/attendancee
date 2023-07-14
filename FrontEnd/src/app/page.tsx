@@ -1,12 +1,9 @@
-import Image from 'next/image'
-import Header from './layouts/Header'
-import Button from './components/Button'
+import FormLogin from "./components/FormLogin";
+
 export default function Home() {
   return (
-    <div >
-      <Header />
-      <p className='text-lg'>Home Page</p>
-      <Button />
+    <div className="flex items-center justify-center h-screen py-16">
+      <FormLogin />
     </div>
-   )
+  );
 }
