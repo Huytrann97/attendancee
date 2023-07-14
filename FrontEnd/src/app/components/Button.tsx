@@ -1,10 +1,15 @@
 import type { NextPage } from "next";
 
-const Button: NextPage = () => {
+interface Props {
+  label: string;
+}
+const Button: NextPage<Props> = (props) => {
+  const { label } = props;
+
   return (
-    <button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-  Login
-</button>    
+    <button className="bg-blue-100 hover:bg-blue-700 text-black py-2 px-4 rounded">
+      {label}
+    </button>
   );
 };
 
