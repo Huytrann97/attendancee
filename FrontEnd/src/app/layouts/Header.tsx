@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
 
 const Header = () => {
   return (
-    <div>
-      <h1>Header of page</h1>
-    </div>
-  )
-}
+    <header className="h-16 w-full flex items-center bg-gray-100">
+      <img src="/logo.png" alt="Logo" className="pl-16" />
+      <div className="text-black text-lg font-bold pl-6 py-auto">
+        Attendance
+      </div>
+    </header>
+  );
+};
 
-export default Header
+export default Header;
