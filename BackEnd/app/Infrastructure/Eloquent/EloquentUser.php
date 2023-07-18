@@ -2,12 +2,15 @@
 
 namespace App\Infrastructure\Eloquent;
 
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Notifications\Notifiable;
 use App\Infrastructure\Eloquent\EloquentUsage;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Model;
 
 class EloquentUser extends Authenticatable
 {
@@ -40,6 +43,12 @@ class EloquentUser extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Custom password hashing attribute.
+     *
+     * @return Attribute
+     */
+ 
     // Relationships
     public function usages(): HasMany
     {
