@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   frontend:
-    container_name: attendancee_front
+    container_name: project_front
     build:
       context: .
       dockerfile: config/react/Dockerfile
@@ -36,7 +36,7 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: attendancee
+      MYSQL_DATABASE: project
       MYSQL_ROOT_PASSWORD: password
 
   phpmyadmin:
@@ -48,7 +48,7 @@ services:
       - db
 
   app:
-    container_name: attendancee
+    container_name: project
     build:
       context: .
       dockerfile: config/php/Dockerfile

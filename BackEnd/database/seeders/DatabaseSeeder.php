@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Infrastructure\Eloquent\EloquentUser;
+use App\Infrastructure\Eloquent\EloquentDepartment;
+use App\Infrastructure\Eloquent\EloquentRole;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+       
+
     }
 }
